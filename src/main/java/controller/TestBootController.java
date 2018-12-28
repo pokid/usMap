@@ -15,12 +15,22 @@ public class TestBootController {
     @Autowired
     private TestBootServiceImpl testBootService;
     @RequestMapping("/")
-    //@ResponseBody 传值用ResponseBody，页面跳转不要用
-    //templates为页面模板  static为静态资源
-    //别问我问什么不放在webapp下。sprintboot的坑我已经踩了
-    String home(Model m) {
+        //@ResponseBody 传值用ResponseBody，页面跳转不要用
+        //templates为页面模板  static为静态资源
+        //别问我问什么不放在webapp下。sprintboot的坑我已经踩了
+    String home(Model model) {
         System.out.println(testBootService.selectByPrimaryKey(1));
-        m.addAttribute("name","你军哥哥");
-        return "test";
+        model.addAttribute("name","你军哥哥1");
+//        return "loginAndRegister";
+        return "index";
+    }
+
+    @RequestMapping("/toLoginAndRegister")
+    String toLoginAndRegister(Model model,String flag) {
+        if(flag == null)
+            flag = "login";
+        System.out.println(flag);
+        model.addAttribute("flag",flag);
+        return "loginAndRegister";
     }
 }

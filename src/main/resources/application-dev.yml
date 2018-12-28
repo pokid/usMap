@@ -45,6 +45,7 @@ spring:
     charset: UTF-8
     # 设置页面缓存
     cache: false
+    template_update_delay: 0
     # 设置ftl文件路径 注意在webapp下的目录不要加classpath!!!
     template-loader-path: classpath:/templates/
 

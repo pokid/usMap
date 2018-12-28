@@ -1,0 +1,119 @@
+body, html {
+    margin: 0px;
+    height:100%;
+}
+
+#header {
+    height: 100px;
+    background-color: blueviolet;
+    position: relative;
+}
+
+#h_left {
+    /*配合实现垂直居中*/
+    display:table;
+    height: 100%;
+    /*background: chocolate;*/
+    width: 50%;
+    position: absolute;
+    top: 0px;
+}
+
+.h_left_l{
+    display:table-cell;
+    width: 30%;
+    text-align: right;
+    vertical-align:middle;
+}
+
+.h_left_r{
+    display:table-cell;
+    padding-left: 30px;
+    /*font-size: 20px;*/
+    /*color: chocolate;*/
+    vertical-align:middle;
+}
+.h_left_r a{
+    text-decoration: none;
+    font-size: 30px;
+    color: chocolate;
+}
+
+#h_right {
+    display:table;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+}
+
+.h_right_span{
+    display:table-cell;
+    vertical-align:middle;
+    padding-left: 70%;
+}
+.h_right_button{
+    display: inline-block;
+    padding: 15px 25px;
+    margin-right: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px #999;
+}
+
+.h_right_button:hover {background-color: #3e8e41}
+
+.h_right_button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#middle {
+    background: thistle;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    bottom: 0px;
+}
+
+.m_left {
+    display:table;
+    width: 60%;
+    height: 100%;
+    position:absolute;
+    top: 0px;
+    bottom: 0px;
+}
+.m_left_span{
+    display:table-cell;
+    padding-left: 20%;
+    vertical-align:middle;
+}
+
+.m_right {
+    display:table;
+    width: 40%;
+    height: 100%;
+    position:absolute;
+    top: 0px;
+    left: 60%;
+    bottom: 0px;
+}
+
+.m_right_span{
+    display:table-cell;
+    /*padding-left: 30px;*/
+    font-size: 50px;
+    color: blueviolet;
+    vertical-align:middle;
+}
+
