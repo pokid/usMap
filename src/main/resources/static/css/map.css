@@ -1,0 +1,320 @@
+body, html {
+    margin: 0px;
+    height:100%;
+}
+
+#header {
+    height: 80px;
+    background-color: blueviolet;
+    position: relative;
+}
+
+#h_left {
+    /*配合实现垂直居中*/
+    display:table;
+    height: 100%;
+    /*background: chocolate;*/
+    width: 85%;
+    padding-left: 10px;
+    position: absolute;
+    top: 0px;
+}
+
+.h_left_index{
+    /*padding-left: 10px;*/
+    padding-top: 5px;
+}
+.h_left_index a{
+    text-decoration: none;
+    font-size: 20px;
+    color: chocolate;
+}
+.h_left_name{
+    width: 15%;
+    height: 100%;
+    margin-top: 10px;
+    float: left;
+
+}
+.h_left_name input{
+    width: 100%;
+    height: 40%;
+    font-size: 25px;
+    color: chocolate;
+    background: blueviolet;
+    border: solid 1px #999999;
+}
+.h_left_menu{
+    width: 81%;
+    height: 100%;
+    border-right: solid 1px #666666;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    float: left;
+}
+.h_left_menu_l{
+    width: 50%;
+    float: left
+}
+.h_left_menu_r{
+    width: 50%;
+    text-align: right;
+    float: left
+}
+
+.h_left_button{
+    display: inline-block;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px #999;
+}
+
+.h_left_button:hover {background-color: #3e8e41}
+
+.h_left_button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px #666;
+    transform: translateY(3px);
+}
+
+#h_right {
+    display:table;
+    height: 100%;
+    width: 15%;
+    position: absolute;
+    left: 85%;
+    top: 0px;
+}
+
+.h_right_span{
+    display:table-cell;
+    vertical-align:middle;
+    /*padding-left: 80%;*/
+    text-align: right;
+}
+.h_right_button{
+    display: inline-block;
+    padding: 15px 25px;
+    margin-right: 20px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px #999;
+}
+
+.h_right_button:hover {background-color: #3e8e41}
+
+.h_right_button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#middle {
+    background: thistle;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    bottom: 0px;
+}
+
+.m_l {
+    width: 85%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    /*position:absolute;*/
+    /*top: 0px;*/
+    /*bottom: 0px;*/
+    float: left;
+}
+
+.m_l_map {
+    width: 3000px;
+    height: 2000px;
+    position: relative;
+}
+/*此处修改箭头的横向和纵向长度*/
+.m_l_map_main{
+    width:880px;
+    height:750px;
+    background: brown;
+    position: relative
+}
+.m_l_map_top{
+    display: table;
+    width: 100%;
+    height: 60px;
+}
+/*横向箭头长度修改此处*/
+.m_l_map_t_line {
+    display: table-cell;
+    vertical-align: bottom;
+    width: 100%;
+    /*background: chartreuse;*/
+}
+.m_l_map_t_hr {
+    margin:0 0 8px 48px;
+    width: auto;
+    height: 5px;
+    border:0;
+    background: black
+}
+.m_l_map_t_arrow{
+    display: table-cell;
+    vertical-align: bottom;
+}
+.m_l_map_left{
+    width: 60px;
+    height: auto;
+    position: absolute;
+    top: 52px;
+    bottom: 15px;
+}
+/*纵向箭头长度修改此处*/
+.m_l_map_l_line{
+    height:100%;
+    /*background: chartreuse*/
+}
+.m_l_map_l_hr{
+    margin:0 0 0 48px;
+    width:5px;
+    height:100%;
+    border:0;
+    background: black
+}
+.m_l_map_l_arrow{
+    margin-left: 40px
+}
+
+
+/*箭头css*/
+.arrow1{
+    width:0;
+    height:0;
+    border: 10px solid transparent;
+    border-left-color: black;
+}
+.arrow2{
+    width:0;
+    height:0;
+    border: 10px solid transparent;
+    border-top-color: black;
+}
+
+.m_l_map_inner{
+    position: absolute;
+    left: 60px;
+    right:0px;
+    top: 60px;
+    bottom:0px;
+    /*background: brown*/
+}
+
+#testTable td{
+    width: 200px;
+    height: 150px;
+    border-bottom: solid 2px black;
+    border-right:solid 30px brown;
+    border-left:solid 30px brown;
+}
+
+.m_r {
+    width: 15%;
+    height: 100%;
+    background: aqua;
+    overflow-y: auto;
+    overflow-x: auto;
+    float: left;
+}
+
+
+.m_r_title{
+    display:table;
+    width: 100%;
+    height: 10%;
+    font-size: 25px;
+    text-align: center;
+    box-shadow: 0 2px 0px darkgray;
+}
+.m_r_title_my{
+    display:table-cell;
+    width: 50%;
+    height: 100%;
+    vertical-align: middle;
+}
+.m_r_title_my div{
+    width: 70%;
+    height: 100%;
+    margin:0 auto;
+    padding-top: 10px;
+    border-bottom: solid 3px #666666;
+    /*border-bottom: none;*/
+}
+.m_r_title_my div:hover {
+    background: #999999;
+    cursor: default;
+}
+
+.m_r_title_team{
+    display:table-cell;
+    width: 50%;
+    height: 100%;
+    vertical-align: middle;
+}
+.m_r_title_team div{
+    width: 70%;
+    height: 100%;
+    margin:0 auto;
+    padding-top: 10px;
+}
+.m_r_title_team div:hover {
+    background: #999999;
+    cursor: default;
+}
+
+/*折叠列表*/
+.mywork_div{
+    margin:0 auto;
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 40px;
+}
+.mywork_div a:hover{
+    text-decoration: none;
+}
+.mywork_div a:hover{
+    background: #999999;
+    cursor: default;
+}
+li{
+    list-style:none;
+}
+
+
+
+
+
+
+
+
+
+

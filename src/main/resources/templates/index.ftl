@@ -38,7 +38,7 @@
     </div>
     <div class="m_right">
         <span class = "m_right_span">
-            开启你的地图之旅吧！
+            <a style="text-decoration:none" href="/toMap"> 开启你的地图之旅吧！</a>
         </span>
     </div>
 </div>

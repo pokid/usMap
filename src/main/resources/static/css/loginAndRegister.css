@@ -68,6 +68,7 @@ body, html {
 }
 .main_center_title_login div:hover {
     background: #999999;
+    cursor: default;
 }
 
 .main_center_title_register{
@@ -84,6 +85,7 @@ body, html {
 }
 .main_center_title_register div:hover {
     background: #999999;
+    cursor: default;
 }
 
 .main_center_bottom {

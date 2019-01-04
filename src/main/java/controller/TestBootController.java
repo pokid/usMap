@@ -17,11 +17,9 @@ public class TestBootController {
     @RequestMapping("/")
         //@ResponseBody 传值用ResponseBody，页面跳转不要用
         //templates为页面模板  static为静态资源
-        //别问我问什么不放在webapp下。sprintboot的坑我已经踩了
     String home(Model model) {
         System.out.println(testBootService.selectByPrimaryKey(1));
         model.addAttribute("name","你军哥哥1");
-//        return "loginAndRegister";
         return "index";
     }
 
@@ -32,5 +30,12 @@ public class TestBootController {
         System.out.println(flag);
         model.addAttribute("flag",flag);
         return "loginAndRegister";
+    }
+
+    @RequestMapping("/toMap")
+    String toMap(Model model) {
+        System.out.println(testBootService.selectByPrimaryKey(1));
+        model.addAttribute("name","你军哥哥大作");
+        return "map";
     }
 }
