@@ -228,12 +228,133 @@ body, html {
     /*background: brown*/
 }
 
-#testTable td{
+#map_table tr{
+    text-align: center;
+}
+
+#map_table td{
     width: 200px;
     height: 150px;
     border-bottom: solid 2px black;
     border-right:solid 30px brown;
     border-left:solid 30px brown;
+}
+#map_table_tr_addCol > td{
+    height: 60px;
+}
+#map_table_tr_users > td{
+    height: 60px;
+}
+
+#map_users_div{
+    width: 80%;
+    height: 30px;
+    margin: auto;
+    padding-top: 10px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.tabledisplay{
+    display:table;
+    position: relative;
+}
+.tablecelldisplay{
+    display: table-cell;
+    vertical-align: middle
+}
+
+.relative{
+    position:relative;
+}
+#ac_td1_div{
+    display:table-cell;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top: 82%;
+    left: 36%;
+}
+#ac_td2_div{
+    background: dodgerblue;
+    position:absolute;
+    bottom:10px;
+    top: 10px;
+    left:0px;
+    right:0px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.ac_td2_div_div1{
+    position:relative;
+    margin-top: 10px;
+}
+.ac_td2_div_div1_div{
+    position:absolute;
+    right: 18px;
+    top: -3px;
+}
+.delItem{
+    border:0;
+    width: 15px;
+    height: 15px;
+}
+.add_div{
+    position:relative;
+    margin-top: 10px;
+}
+
+.task_div{
+    position:absolute;
+    background: gold;
+    bottom:10px;
+    top: 10px;
+    left:0px;
+    right:0px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.task_div_div1{
+    position:relative;
+    margin-top: 10px;
+}
+.del_div{
+    position:absolute;
+    right: 18px;
+    top: -3px;
+}
+
+#rediv{
+    display:table-cell;
+    width:50px;
+    height:50px;
+    position:absolute;
+    top: 82%;
+    left: 36%;
+}
+#addRow{
+    width: 100%;
+    height: 100%;
+}
+
+.re_td2_div{
+    position:absolute;
+    background: chocolate;
+    bottom:10px;
+    top: 10px;
+    left:0px;
+    right:0px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.re_td2_div_div1{
+    position:relative;
+    margin-top: 10px;
+}
+
+#hideTasks{
+    width: 100%;
+    height: 100%;
 }
 
 .m_r {
