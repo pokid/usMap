@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.MapMapper" >
+  <resultMap id="BaseResultMap" type="domain.Map" >
+    <id column="mapID" property="mapid" jdbcType="INTEGER" />
+    <result column="userID" property="userid" jdbcType="INTEGER" />
+    <result column="mapName" property="mapname" jdbcType="VARCHAR" />
+    <result column="personasID" property="personasid" jdbcType="INTEGER" />
+    <result column="activitiesID" property="activitiesid" jdbcType="INTEGER" />
+    <result column="tasksID" property="tasksid" jdbcType="INTEGER" />
+    <result column="releasesID" property="releasesid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mapID, userID, mapName, personasID, activitiesID, tasksID, releasesID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from map
+    where mapID = #{mapid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from map
+    where mapID = #{mapid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.Map" >
+    insert into map (mapID, userID, mapName, 
+      personasID, activitiesID, tasksID, 
+      releasesID)
+    values (#{mapid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{mapname,jdbcType=VARCHAR}, 
+      #{personasid,jdbcType=INTEGER}, #{activitiesid,jdbcType=INTEGER}, #{tasksid,jdbcType=INTEGER}, 
+      #{releasesid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="domain.Map" >
+    insert into map
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mapid != null" >
+        mapID,
+      </if>
+      <if test="userid != null" >
+        userID,
+      </if>
+      <if test="mapname != null" >
+        mapName,
+      </if>
+      <if test="personasid != null" >
+        personasID,
+      </if>
+      <if test="activitiesid != null" >
+        activitiesID,
+      </if>
+      <if test="tasksid != null" >
+        tasksID,
+      </if>
+      <if test="releasesid != null" >
+        releasesID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mapid != null" >
+        #{mapid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="mapname != null" >
+        #{mapname,jdbcType=VARCHAR},
+      </if>
+      <if test="personasid != null" >
+        #{personasid,jdbcType=INTEGER},
+      </if>
+      <if test="activitiesid != null" >
+        #{activitiesid,jdbcType=INTEGER},
+      </if>
+      <if test="tasksid != null" >
+        #{tasksid,jdbcType=INTEGER},
+      </if>
+      <if test="releasesid != null" >
+        #{releasesid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="domain.Map" >
+    update map
+    <set >
+      <if test="userid != null" >
+        userID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="mapname != null" >
+        mapName = #{mapname,jdbcType=VARCHAR},
+      </if>
+      <if test="personasid != null" >
+        personasID = #{personasid,jdbcType=INTEGER},
+      </if>
+      <if test="activitiesid != null" >
+        activitiesID = #{activitiesid,jdbcType=INTEGER},
+      </if>
+      <if test="tasksid != null" >
+        tasksID = #{tasksid,jdbcType=INTEGER},
+      </if>
+      <if test="releasesid != null" >
+        releasesID = #{releasesid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mapID = #{mapid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="domain.Map" >
+    update map
+    set userID = #{userid,jdbcType=INTEGER},
+      mapName = #{mapname,jdbcType=VARCHAR},
+      personasID = #{personasid,jdbcType=INTEGER},
+      activitiesID = #{activitiesid,jdbcType=INTEGER},
+      tasksID = #{tasksid,jdbcType=INTEGER},
+      releasesID = #{releasesid,jdbcType=INTEGER}
+    where mapID = #{mapid,jdbcType=INTEGER}
+  </update>
+</mapper>

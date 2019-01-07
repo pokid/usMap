@@ -77,7 +77,7 @@
                                 <div class="tablecelldisplay">
                                     activities
                                 </div>
-                                <div id="ac_td1_div"
+                                <div id="ac_td1_div">
                                     <input id="hideTasks" type="button"
                                            value="隐藏">
                                 </div>

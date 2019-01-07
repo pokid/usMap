@@ -3,11 +3,12 @@
 <mapper namespace="mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="domain.User" >
     <id column="userID" property="userid" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="nickName" property="nickname" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    userID, name, age
+    userID, nickName, email, password
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,10 +21,10 @@
     where userID = #{userid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="domain.User" >
-    insert into user (userID, name, age
-      )
-    values (#{userid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
-      )
+    insert into user (userID, nickName, email, 
+      password)
+    values (#{userid,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="domain.User" >
     insert into user
@@ -31,41 +32,51 @@
       <if test="userid != null" >
         userID,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="nickname != null" >
+        nickName,
       </if>
-      <if test="age != null" >
-        age,
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="password != null" >
+        password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
         #{userid,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        #{age,jdbcType=INTEGER},
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="domain.User" >
     update user
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="nickname != null" >
+        nickName = #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
     where userID = #{userid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="domain.User" >
     update user
-    set name = #{name,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER}
+    set nickName = #{nickname,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
     where userID = #{userid,jdbcType=INTEGER}
   </update>
 </mapper>

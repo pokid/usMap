@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.AitemMapper" >
+  <resultMap id="BaseResultMap" type="domain.Aitem" >
+    <id column="aItemID" property="aitemid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aItemID, content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from aitem
+    where aItemID = #{aitemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from aitem
+    where aItemID = #{aitemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.Aitem" >
+    insert into aitem (aItemID, content)
+    values (#{aitemid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="domain.Aitem" >
+    insert into aitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aitemid != null" >
+        aItemID,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aitemid != null" >
+        #{aitemid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="domain.Aitem" >
+    update aitem
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aItemID = #{aitemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="domain.Aitem" >
+    update aitem
+    set content = #{content,jdbcType=VARCHAR}
+    where aItemID = #{aitemid,jdbcType=INTEGER}
+  </update>
+</mapper>

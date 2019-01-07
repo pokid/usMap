@@ -5,9 +5,11 @@ import java.io.Serializable;
 public class User implements Serializable {
     private Integer userid;
 
-    private String name;
+    private String nickname;
 
-    private Integer age;
+    private String email;
+
+    private String password;
 
     private static final long serialVersionUID = 1L;
 
@@ -19,20 +21,28 @@ public class User implements Serializable {
         this.userid = userid;
     }
 
-    public String getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public Integer getAge() {
-        return age;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     @Override
@@ -48,8 +58,9 @@ public class User implements Serializable {
         }
         User other = (User) that;
         return (this.getUserid() == null ? other.getUserid() == null : this.getUserid().equals(other.getUserid()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()));
+            && (this.getNickname() == null ? other.getNickname() == null : this.getNickname().equals(other.getNickname()))
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()));
     }
 
     @Override
@@ -57,8 +68,9 @@ public class User implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getUserid() == null) ? 0 : getUserid().hashCode());
-        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getAge() == null) ? 0 : getAge().hashCode());
+        result = prime * result + ((getNickname() == null) ? 0 : getNickname().hashCode());
+        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
         return result;
     }
 
@@ -69,8 +81,9 @@ public class User implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", userid=").append(userid);
-        sb.append(", name=").append(name);
-        sb.append(", age=").append(age);
+        sb.append(", nickname=").append(nickname);
+        sb.append(", email=").append(email);
+        sb.append(", password=").append(password);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

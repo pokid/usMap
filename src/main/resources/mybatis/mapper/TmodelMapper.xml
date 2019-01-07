@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.TmodelMapper" >
+  <resultMap id="BaseResultMap" type="domain.Tmodel" >
+    <id column="tModelID" property="tmodelid" jdbcType="INTEGER" />
+    <result column="tItemID" property="titemid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tModelID, tItemID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tmodel
+    where tModelID = #{tmodelid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tmodel
+    where tModelID = #{tmodelid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.Tmodel" >
+    insert into tmodel (tModelID, tItemID)
+    values (#{tmodelid,jdbcType=INTEGER}, #{titemid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="domain.Tmodel" >
+    insert into tmodel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tmodelid != null" >
+        tModelID,
+      </if>
+      <if test="titemid != null" >
+        tItemID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tmodelid != null" >
+        #{tmodelid,jdbcType=INTEGER},
+      </if>
+      <if test="titemid != null" >
+        #{titemid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="domain.Tmodel" >
+    update tmodel
+    <set >
+      <if test="titemid != null" >
+        tItemID = #{titemid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tModelID = #{tmodelid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="domain.Tmodel" >
+    update tmodel
+    set tItemID = #{titemid,jdbcType=INTEGER}
+    where tModelID = #{tmodelid,jdbcType=INTEGER}
+  </update>
+</mapper>
