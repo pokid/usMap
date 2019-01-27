@@ -5,7 +5,9 @@ import java.io.Serializable;
 public class Tmodel implements Serializable {
     private Integer tmodelid;
 
-    private Integer titemid;
+    private Integer tasksid;
+
+    private String content;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,12 +19,20 @@ public class Tmodel implements Serializable {
         this.tmodelid = tmodelid;
     }
 
-    public Integer getTitemid() {
-        return titemid;
+    public Integer getTasksid() {
+        return tasksid;
     }
 
-    public void setTitemid(Integer titemid) {
-        this.titemid = titemid;
+    public void setTasksid(Integer tasksid) {
+        this.tasksid = tasksid;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     @Override
@@ -38,7 +48,8 @@ public class Tmodel implements Serializable {
         }
         Tmodel other = (Tmodel) that;
         return (this.getTmodelid() == null ? other.getTmodelid() == null : this.getTmodelid().equals(other.getTmodelid()))
-            && (this.getTitemid() == null ? other.getTitemid() == null : this.getTitemid().equals(other.getTitemid()));
+            && (this.getTasksid() == null ? other.getTasksid() == null : this.getTasksid().equals(other.getTasksid()))
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
     @Override
@@ -46,7 +57,8 @@ public class Tmodel implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getTmodelid() == null) ? 0 : getTmodelid().hashCode());
-        result = prime * result + ((getTitemid() == null) ? 0 : getTitemid().hashCode());
+        result = prime * result + ((getTasksid() == null) ? 0 : getTasksid().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
 
@@ -57,7 +69,8 @@ public class Tmodel implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", tmodelid=").append(tmodelid);
-        sb.append(", titemid=").append(titemid);
+        sb.append(", tasksid=").append(tasksid);
+        sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

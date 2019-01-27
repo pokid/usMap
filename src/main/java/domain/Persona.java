@@ -2,19 +2,29 @@ package domain;
 
 import java.io.Serializable;
 
-public class Titem implements Serializable {
-    private Integer titemid;
+public class Persona implements Serializable {
+    private Integer personaid;
+
+    private Integer personasid;
 
     private String content;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getTitemid() {
-        return titemid;
+    public Integer getPersonaid() {
+        return personaid;
     }
 
-    public void setTitemid(Integer titemid) {
-        this.titemid = titemid;
+    public void setPersonaid(Integer personaid) {
+        this.personaid = personaid;
+    }
+
+    public Integer getPersonasid() {
+        return personasid;
+    }
+
+    public void setPersonasid(Integer personasid) {
+        this.personasid = personasid;
     }
 
     public String getContent() {
@@ -36,8 +46,9 @@ public class Titem implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Titem other = (Titem) that;
-        return (this.getTitemid() == null ? other.getTitemid() == null : this.getTitemid().equals(other.getTitemid()))
+        Persona other = (Persona) that;
+        return (this.getPersonaid() == null ? other.getPersonaid() == null : this.getPersonaid().equals(other.getPersonaid()))
+            && (this.getPersonasid() == null ? other.getPersonasid() == null : this.getPersonasid().equals(other.getPersonasid()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
@@ -45,7 +56,8 @@ public class Titem implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getTitemid() == null) ? 0 : getTitemid().hashCode());
+        result = prime * result + ((getPersonaid() == null) ? 0 : getPersonaid().hashCode());
+        result = prime * result + ((getPersonasid() == null) ? 0 : getPersonasid().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
@@ -56,7 +68,8 @@ public class Titem implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", titemid=").append(titemid);
+        sb.append(", personaid=").append(personaid);
+        sb.append(", personasid=").append(personasid);
         sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

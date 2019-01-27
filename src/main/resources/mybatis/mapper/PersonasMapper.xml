@@ -3,10 +3,10 @@
 <mapper namespace="mapper.PersonasMapper" >
   <resultMap id="BaseResultMap" type="domain.Personas" >
     <id column="personasID" property="personasid" jdbcType="INTEGER" />
-    <result column="personaID" property="personaid" jdbcType="INTEGER" />
+    <result column="mapID" property="mapid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    personasID, personaID
+    personasID, mapID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +19,8 @@
     where personasID = #{personasid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="domain.Personas" >
-    insert into personas (personasID, personaID)
-    values (#{personasid,jdbcType=INTEGER}, #{personaid,jdbcType=INTEGER})
+    insert into personas (personasID, mapID)
+    values (#{personasid,jdbcType=INTEGER}, #{mapid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="domain.Personas" >
     insert into personas
@@ -28,31 +28,31 @@
       <if test="personasid != null" >
         personasID,
       </if>
-      <if test="personaid != null" >
-        personaID,
+      <if test="mapid != null" >
+        mapID,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="personasid != null" >
         #{personasid,jdbcType=INTEGER},
       </if>
-      <if test="personaid != null" >
-        #{personaid,jdbcType=INTEGER},
+      <if test="mapid != null" >
+        #{mapid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="domain.Personas" >
     update personas
     <set >
-      <if test="personaid != null" >
-        personaID = #{personaid,jdbcType=INTEGER},
+      <if test="mapid != null" >
+        mapID = #{mapid,jdbcType=INTEGER},
       </if>
     </set>
     where personasID = #{personasid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="domain.Personas" >
     update personas
-    set personaID = #{personaid,jdbcType=INTEGER}
+    set mapID = #{mapid,jdbcType=INTEGER}
     where personasID = #{personasid,jdbcType=INTEGER}
   </update>
 </mapper>

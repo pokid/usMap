@@ -5,7 +5,9 @@ import java.io.Serializable;
 public class Activities implements Serializable {
     private Integer activitiesid;
 
-    private Integer amodelid;
+    private Integer mapid;
+
+    private Integer personaid;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,12 +19,20 @@ public class Activities implements Serializable {
         this.activitiesid = activitiesid;
     }
 
-    public Integer getAmodelid() {
-        return amodelid;
+    public Integer getMapid() {
+        return mapid;
     }
 
-    public void setAmodelid(Integer amodelid) {
-        this.amodelid = amodelid;
+    public void setMapid(Integer mapid) {
+        this.mapid = mapid;
+    }
+
+    public Integer getPersonaid() {
+        return personaid;
+    }
+
+    public void setPersonaid(Integer personaid) {
+        this.personaid = personaid;
     }
 
     @Override
@@ -38,7 +48,8 @@ public class Activities implements Serializable {
         }
         Activities other = (Activities) that;
         return (this.getActivitiesid() == null ? other.getActivitiesid() == null : this.getActivitiesid().equals(other.getActivitiesid()))
-            && (this.getAmodelid() == null ? other.getAmodelid() == null : this.getAmodelid().equals(other.getAmodelid()));
+            && (this.getMapid() == null ? other.getMapid() == null : this.getMapid().equals(other.getMapid()))
+            && (this.getPersonaid() == null ? other.getPersonaid() == null : this.getPersonaid().equals(other.getPersonaid()));
     }
 
     @Override
@@ -46,7 +57,8 @@ public class Activities implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getActivitiesid() == null) ? 0 : getActivitiesid().hashCode());
-        result = prime * result + ((getAmodelid() == null) ? 0 : getAmodelid().hashCode());
+        result = prime * result + ((getMapid() == null) ? 0 : getMapid().hashCode());
+        result = prime * result + ((getPersonaid() == null) ? 0 : getPersonaid().hashCode());
         return result;
     }
 
@@ -57,7 +69,8 @@ public class Activities implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", activitiesid=").append(activitiesid);
-        sb.append(", amodelid=").append(amodelid);
+        sb.append(", mapid=").append(mapid);
+        sb.append(", personaid=").append(personaid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

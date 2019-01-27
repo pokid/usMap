@@ -3,10 +3,11 @@
 <mapper namespace="mapper.AmodelMapper" >
   <resultMap id="BaseResultMap" type="domain.Amodel" >
     <id column="aModelID" property="amodelid" jdbcType="INTEGER" />
-    <result column="aItemID" property="aitemid" jdbcType="INTEGER" />
+    <result column="activitiesID" property="activitiesid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    aModelID, aItemID
+    aModelID, activitiesID, content
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +20,10 @@
     where aModelID = #{amodelid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="domain.Amodel" >
-    insert into amodel (aModelID, aItemID)
-    values (#{amodelid,jdbcType=INTEGER}, #{aitemid,jdbcType=INTEGER})
+    insert into amodel (aModelID, activitiesID, content
+      )
+    values (#{amodelid,jdbcType=INTEGER}, #{activitiesid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="domain.Amodel" >
     insert into amodel
@@ -28,31 +31,41 @@
       <if test="amodelid != null" >
         aModelID,
       </if>
-      <if test="aitemid != null" >
-        aItemID,
+      <if test="activitiesid != null" >
+        activitiesID,
+      </if>
+      <if test="content != null" >
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="amodelid != null" >
         #{amodelid,jdbcType=INTEGER},
       </if>
-      <if test="aitemid != null" >
-        #{aitemid,jdbcType=INTEGER},
+      <if test="activitiesid != null" >
+        #{activitiesid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="domain.Amodel" >
     update amodel
     <set >
-      <if test="aitemid != null" >
-        aItemID = #{aitemid,jdbcType=INTEGER},
+      <if test="activitiesid != null" >
+        activitiesID = #{activitiesid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
       </if>
     </set>
     where aModelID = #{amodelid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="domain.Amodel" >
     update amodel
-    set aItemID = #{aitemid,jdbcType=INTEGER}
+    set activitiesID = #{activitiesid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
     where aModelID = #{amodelid,jdbcType=INTEGER}
   </update>
 </mapper>

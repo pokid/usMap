@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.PersonaMapper" >
+  <resultMap id="BaseResultMap" type="domain.Persona" >
+    <id column="personaID" property="personaid" jdbcType="INTEGER" />
+    <result column="personasID" property="personasid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    personaID, personasID, content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from persona
+    where personaID = #{personaid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from persona
+    where personaID = #{personaid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.Persona" >
+    insert into persona (personaID, personasID, content
+      )
+    values (#{personaid,jdbcType=INTEGER}, #{personasid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="domain.Persona" >
+    insert into persona
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personaid != null" >
+        personaID,
+      </if>
+      <if test="personasid != null" >
+        personasID,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personaid != null" >
+        #{personaid,jdbcType=INTEGER},
+      </if>
+      <if test="personasid != null" >
+        #{personasid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="domain.Persona" >
+    update persona
+    <set >
+      <if test="personasid != null" >
+        personasID = #{personasid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where personaID = #{personaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="domain.Persona" >
+    update persona
+    set personasID = #{personasid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
+    where personaID = #{personaid,jdbcType=INTEGER}
+  </update>
+</mapper>

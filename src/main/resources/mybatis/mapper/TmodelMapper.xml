@@ -3,10 +3,11 @@
 <mapper namespace="mapper.TmodelMapper" >
   <resultMap id="BaseResultMap" type="domain.Tmodel" >
     <id column="tModelID" property="tmodelid" jdbcType="INTEGER" />
-    <result column="tItemID" property="titemid" jdbcType="INTEGER" />
+    <result column="tasksID" property="tasksid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    tModelID, tItemID
+    tModelID, tasksID, content
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +20,10 @@
     where tModelID = #{tmodelid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="domain.Tmodel" >
-    insert into tmodel (tModelID, tItemID)
-    values (#{tmodelid,jdbcType=INTEGER}, #{titemid,jdbcType=INTEGER})
+    insert into tmodel (tModelID, tasksID, content
+      )
+    values (#{tmodelid,jdbcType=INTEGER}, #{tasksid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="domain.Tmodel" >
     insert into tmodel
@@ -28,31 +31,41 @@
       <if test="tmodelid != null" >
         tModelID,
       </if>
-      <if test="titemid != null" >
-        tItemID,
+      <if test="tasksid != null" >
+        tasksID,
+      </if>
+      <if test="content != null" >
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="tmodelid != null" >
         #{tmodelid,jdbcType=INTEGER},
       </if>
-      <if test="titemid != null" >
-        #{titemid,jdbcType=INTEGER},
+      <if test="tasksid != null" >
+        #{tasksid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="domain.Tmodel" >
     update tmodel
     <set >
-      <if test="titemid != null" >
-        tItemID = #{titemid,jdbcType=INTEGER},
+      <if test="tasksid != null" >
+        tasksID = #{tasksid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
       </if>
     </set>
     where tModelID = #{tmodelid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="domain.Tmodel" >
     update tmodel
-    set tItemID = #{titemid,jdbcType=INTEGER}
+    set tasksID = #{tasksid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
     where tModelID = #{tmodelid,jdbcType=INTEGER}
   </update>
 </mapper>

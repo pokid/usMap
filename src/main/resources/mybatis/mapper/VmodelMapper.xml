@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.VmodelMapper" >
+  <resultMap id="BaseResultMap" type="domain.Vmodel" >
+    <id column="vModelID" property="vmodelid" jdbcType="INTEGER" />
+    <result column="versionID" property="versionid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    vModelID, versionID, content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vmodel
+    where vModelID = #{vmodelid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vmodel
+    where vModelID = #{vmodelid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.Vmodel" >
+    insert into vmodel (vModelID, versionID, content
+      )
+    values (#{vmodelid,jdbcType=INTEGER}, #{versionid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="domain.Vmodel" >
+    insert into vmodel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vmodelid != null" >
+        vModelID,
+      </if>
+      <if test="versionid != null" >
+        versionID,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vmodelid != null" >
+        #{vmodelid,jdbcType=INTEGER},
+      </if>
+      <if test="versionid != null" >
+        #{versionid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="domain.Vmodel" >
+    update vmodel
+    <set >
+      <if test="versionid != null" >
+        versionID = #{versionid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vModelID = #{vmodelid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="domain.Vmodel" >
+    update vmodel
+    set versionID = #{versionid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR}
+    where vModelID = #{vmodelid,jdbcType=INTEGER}
+  </update>
+</mapper>

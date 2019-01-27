@@ -5,7 +5,9 @@ import java.io.Serializable;
 public class Amodel implements Serializable {
     private Integer amodelid;
 
-    private Integer aitemid;
+    private Integer activitiesid;
+
+    private String content;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,12 +19,20 @@ public class Amodel implements Serializable {
         this.amodelid = amodelid;
     }
 
-    public Integer getAitemid() {
-        return aitemid;
+    public Integer getActivitiesid() {
+        return activitiesid;
     }
 
-    public void setAitemid(Integer aitemid) {
-        this.aitemid = aitemid;
+    public void setActivitiesid(Integer activitiesid) {
+        this.activitiesid = activitiesid;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     @Override
@@ -38,7 +48,8 @@ public class Amodel implements Serializable {
         }
         Amodel other = (Amodel) that;
         return (this.getAmodelid() == null ? other.getAmodelid() == null : this.getAmodelid().equals(other.getAmodelid()))
-            && (this.getAitemid() == null ? other.getAitemid() == null : this.getAitemid().equals(other.getAitemid()));
+            && (this.getActivitiesid() == null ? other.getActivitiesid() == null : this.getActivitiesid().equals(other.getActivitiesid()))
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
     @Override
@@ -46,7 +57,8 @@ public class Amodel implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getAmodelid() == null) ? 0 : getAmodelid().hashCode());
-        result = prime * result + ((getAitemid() == null) ? 0 : getAitemid().hashCode());
+        result = prime * result + ((getActivitiesid() == null) ? 0 : getActivitiesid().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
 
@@ -57,7 +69,8 @@ public class Amodel implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", amodelid=").append(amodelid);
-        sb.append(", aitemid=").append(aitemid);
+        sb.append(", activitiesid=").append(activitiesid);
+        sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

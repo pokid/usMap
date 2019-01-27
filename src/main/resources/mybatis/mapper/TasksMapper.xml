@@ -3,10 +3,12 @@
 <mapper namespace="mapper.TasksMapper" >
   <resultMap id="BaseResultMap" type="domain.Tasks" >
     <id column="tasksID" property="tasksid" jdbcType="INTEGER" />
-    <result column="tModelID" property="tmodelid" jdbcType="INTEGER" />
+    <result column="mapID" property="mapid" jdbcType="INTEGER" />
+    <result column="personaID" property="personaid" jdbcType="INTEGER" />
+    <result column="aModelID" property="amodelid" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    tasksID, tModelID
+    tasksID, mapID, personaID, aModelID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -19,8 +21,10 @@
     where tasksID = #{tasksid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="domain.Tasks" >
-    insert into tasks (tasksID, tModelID)
-    values (#{tasksid,jdbcType=INTEGER}, #{tmodelid,jdbcType=INTEGER})
+    insert into tasks (tasksID, mapID, personaID, 
+      aModelID)
+    values (#{tasksid,jdbcType=INTEGER}, #{mapid,jdbcType=INTEGER}, #{personaid,jdbcType=INTEGER}, 
+      #{amodelid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="domain.Tasks" >
     insert into tasks
@@ -28,31 +32,51 @@
       <if test="tasksid != null" >
         tasksID,
       </if>
-      <if test="tmodelid != null" >
-        tModelID,
+      <if test="mapid != null" >
+        mapID,
+      </if>
+      <if test="personaid != null" >
+        personaID,
+      </if>
+      <if test="amodelid != null" >
+        aModelID,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="tasksid != null" >
         #{tasksid,jdbcType=INTEGER},
       </if>
-      <if test="tmodelid != null" >
-        #{tmodelid,jdbcType=INTEGER},
+      <if test="mapid != null" >
+        #{mapid,jdbcType=INTEGER},
+      </if>
+      <if test="personaid != null" >
+        #{personaid,jdbcType=INTEGER},
+      </if>
+      <if test="amodelid != null" >
+        #{amodelid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="domain.Tasks" >
     update tasks
     <set >
-      <if test="tmodelid != null" >
-        tModelID = #{tmodelid,jdbcType=INTEGER},
+      <if test="mapid != null" >
+        mapID = #{mapid,jdbcType=INTEGER},
+      </if>
+      <if test="personaid != null" >
+        personaID = #{personaid,jdbcType=INTEGER},
+      </if>
+      <if test="amodelid != null" >
+        aModelID = #{amodelid,jdbcType=INTEGER},
       </if>
     </set>
     where tasksID = #{tasksid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="domain.Tasks" >
     update tasks
-    set tModelID = #{tmodelid,jdbcType=INTEGER}
+    set mapID = #{mapid,jdbcType=INTEGER},
+      personaID = #{personaid,jdbcType=INTEGER},
+      aModelID = #{amodelid,jdbcType=INTEGER}
     where tasksID = #{tasksid,jdbcType=INTEGER}
   </update>
 </mapper>

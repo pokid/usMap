@@ -2,19 +2,29 @@ package domain;
 
 import java.io.Serializable;
 
-public class Aitem implements Serializable {
-    private Integer aitemid;
+public class Vmodel implements Serializable {
+    private Integer vmodelid;
+
+    private Integer versionid;
 
     private String content;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getAitemid() {
-        return aitemid;
+    public Integer getVmodelid() {
+        return vmodelid;
     }
 
-    public void setAitemid(Integer aitemid) {
-        this.aitemid = aitemid;
+    public void setVmodelid(Integer vmodelid) {
+        this.vmodelid = vmodelid;
+    }
+
+    public Integer getVersionid() {
+        return versionid;
+    }
+
+    public void setVersionid(Integer versionid) {
+        this.versionid = versionid;
     }
 
     public String getContent() {
@@ -36,8 +46,9 @@ public class Aitem implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Aitem other = (Aitem) that;
-        return (this.getAitemid() == null ? other.getAitemid() == null : this.getAitemid().equals(other.getAitemid()))
+        Vmodel other = (Vmodel) that;
+        return (this.getVmodelid() == null ? other.getVmodelid() == null : this.getVmodelid().equals(other.getVmodelid()))
+            && (this.getVersionid() == null ? other.getVersionid() == null : this.getVersionid().equals(other.getVersionid()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
@@ -45,7 +56,8 @@ public class Aitem implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getAitemid() == null) ? 0 : getAitemid().hashCode());
+        result = prime * result + ((getVmodelid() == null) ? 0 : getVmodelid().hashCode());
+        result = prime * result + ((getVersionid() == null) ? 0 : getVersionid().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
@@ -56,7 +68,8 @@ public class Aitem implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", aitemid=").append(aitemid);
+        sb.append(", vmodelid=").append(vmodelid);
+        sb.append(", versionid=").append(versionid);
         sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

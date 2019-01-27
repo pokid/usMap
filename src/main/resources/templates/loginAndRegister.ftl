@@ -2,9 +2,14 @@
 <html>
 <link rel="stylesheet" href="static/css/loginAndRegister.css" type="text/css"/>
 <script type="text/javascript" src="/static/jquery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="/static/jquery/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/static/jquery/messages_zh.min.js"></script>
 <script type="text/javascript" src="/static/js/loginAndRegister.js"></script>
 <script type="text/javascript">
-    var flag = "${flag}"
+    var flag = "${flag}";
+    $(function(){
+        $("#myform").validate();
+    });
 </script>
 <head>
     <title>loginAndRegister</title>
@@ -29,10 +34,12 @@
             </div>
         </div>
         <div class="main_center_bottom">
-            <input type="text" class="main_center_bottom_input" placeholder="昵称">
-            <input type="password" class="main_center_bottom_input" placeholder="密码">
-            <input type="text" id="main_center_bottom_input_mail" class="main_center_bottom_input" placeholder="邮箱">
-            <input type="submit"id="main_center_bottom_input_button" class="main_center_bottom_button" value="登录">
+            <form id="myform" action="login" method="post">
+                <input type="text" id="main_center_bottom_input_nickname" class="main_center_bottom_input" name="nickname" placeholder="昵称">
+                <input type="text" id="main_center_bottom_input_mail" class="main_center_bottom_input" name="email" placeholder="邮箱">
+                <input type="password" class="main_center_bottom_input" name="password" placeholder="密码">
+                <input type="submit" id="main_center_bottom_input_button" class="main_center_bottom_button" value="登录">
+            </form>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Personas implements Serializable {
     private Integer personasid;
 
-    private Integer personaid;
+    private Integer mapid;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,12 +17,12 @@ public class Personas implements Serializable {
         this.personasid = personasid;
     }
 
-    public Integer getPersonaid() {
-        return personaid;
+    public Integer getMapid() {
+        return mapid;
     }
 
-    public void setPersonaid(Integer personaid) {
-        this.personaid = personaid;
+    public void setMapid(Integer mapid) {
+        this.mapid = mapid;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Personas implements Serializable {
         }
         Personas other = (Personas) that;
         return (this.getPersonasid() == null ? other.getPersonasid() == null : this.getPersonasid().equals(other.getPersonasid()))
-            && (this.getPersonaid() == null ? other.getPersonaid() == null : this.getPersonaid().equals(other.getPersonaid()));
+            && (this.getMapid() == null ? other.getMapid() == null : this.getMapid().equals(other.getMapid()));
     }
 
     @Override
@@ -46,7 +46,7 @@ public class Personas implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getPersonasid() == null) ? 0 : getPersonasid().hashCode());
-        result = prime * result + ((getPersonaid() == null) ? 0 : getPersonaid().hashCode());
+        result = prime * result + ((getMapid() == null) ? 0 : getMapid().hashCode());
         return result;
     }
 
@@ -57,7 +57,7 @@ public class Personas implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", personasid=").append(personasid);
-        sb.append(", personaid=").append(personaid);
+        sb.append(", mapid=").append(mapid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
