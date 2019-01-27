@@ -11,6 +11,8 @@ public interface UserMapper {
 
     User selectByPrimaryKey(Integer userid);
 
+    User selectUserByEmail(String email);
+
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);

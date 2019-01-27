@@ -1,9 +1,12 @@
 package domain;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 public class User implements Serializable {
+
     private Integer userid;
+
 
     private String nickname;
 
@@ -44,6 +47,7 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
 
     @Override
     public boolean equals(Object that) {

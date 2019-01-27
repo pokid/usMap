@@ -9,6 +9,7 @@ body, html {
     /*border-bottom: solid 1px #666666;*/
     box-shadow: 2px 2px 2px darkgray;
     position: relative;
+    background-color: blueviolet;
 }
 
 .main_center {
@@ -16,7 +17,10 @@ body, html {
     height: 100%;
     /*水平居中*/
     margin: 0 auto;
+    background-color: cadetblue;
+    float: bottom;
 }
+
 
 .main_center_top {
     display: table;
@@ -51,12 +55,14 @@ body, html {
     font-size: 25px;
     text-align: center;
     box-shadow: 0 2px 0px darkgray;
+    background-color: chartreuse;
 }
 .main_center_title_login{
     display:table-cell;
     width: 50%;
     height: 100%;
     vertical-align: middle;
+    background-color: coral;
 }
 .main_center_title_login div{
     width: 70%;
@@ -88,11 +94,13 @@ body, html {
     cursor: default;
 }
 
+
 .main_center_bottom {
     height: 55%;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 30px;
+    position: relative;
 }
 .main_center_bottom_input{
     width:100%;
@@ -104,6 +112,7 @@ body, html {
     text-indent:10px;
     margin-bottom: 20px;
 }
+
 /*#main_center_bottom_input_mail{*/
     /*display: none;*/
 /*}*/
@@ -115,12 +124,15 @@ body, html {
 }
 .main_center_bottom_button{
     width:100%;
+    /*父级标签的宽度*/
     height:40px;
     display: inline-block;
+    /*块级元素同一行展示*/
     /*padding: 15px 25px;*/
     /*margin-right: 20px;*/
     font-size: 20px;
     cursor: pointer;
+    /*cursor：pointer设定鼠标的形状为一只伸出食指的手*/
     text-align: center;
     text-decoration: none;
     outline: none;

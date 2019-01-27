@@ -2,14 +2,9 @@
 <html>
 <link rel="stylesheet" href="static/css/loginAndRegister.css" type="text/css"/>
 <script type="text/javascript" src="/static/jquery/jquery-3.0.0.min.js"></script>
-<script type="text/javascript" src="/static/jquery/jquery.validate.min.js"></script>
-<script type="text/javascript" src="/static/jquery/messages_zh.min.js"></script>
 <script type="text/javascript" src="/static/js/loginAndRegister.js"></script>
 <script type="text/javascript">
-    var flag = "${flag}";
-    $(function(){
-        $("#myform").validate();
-    });
+    var flag = "${flag}"
 </script>
 <head>
     <title>loginAndRegister</title>
@@ -23,6 +18,7 @@
             </span>
             <span class="main_center_top_name">
                 <a href="/">usMap</a>
+            <#--${kk!""}-->
             </span>
         </div>
         <div class="main_center_title">
@@ -33,18 +29,36 @@
                 <div>注册</div>
             </div>
         </div>
+        <div>
+        </div>
+
         <div class="main_center_bottom">
-            <form id="myform" action="login" method="post">
-                <input type="text" id="main_center_bottom_input_nickname" class="main_center_bottom_input" name="nickname" placeholder="昵称">
-                <input type="text" id="main_center_bottom_input_mail" class="main_center_bottom_input" name="email" placeholder="邮箱">
-                <input type="password" class="main_center_bottom_input" name="password" placeholder="密码">
-                <input type="submit" id="main_center_bottom_input_button" class="main_center_bottom_button" value="登录">
+            <form action="" method="post" id="lAndrForm">
+                <div style="position: relative;">
+                <input type="text" id="main_center_bottom_input_mail" class="main_center_bottom_input" placeholder="邮箱" name="email">
+                <span id="input_email_warm" style="color: red; font-size: small;position:absolute;top: -16px;"></span>
+                </div>
+
+                <div style="position: relative;">
+                <input type="text" id="main_center_bottom_input_nickname" class="main_center_bottom_input" placeholder="昵称" name="nickname">
+                <span id="input_nickname_warm" style="color: red; font-size: small;position:absolute;top: -16px;"></span>
+                </div>
+
+                <div style="position: relative;">
+                <input type="password" id="main_center_bottom_input_password" class="main_center_bottom_input" placeholder="密码" name="password">
+                <span id="input_password_warm" style="color: red ;font-size: small;position:absolute;top: -16px;"></span>
+                </div>
+                <input type="button"id="main_center_bottom_input_button" class="main_center_bottom_button" value="登录" onclick="submitForm()">
             </form>
         </div>
+
+
     </div>
-</div>
-<div id="footer">
 
 </div>
+
+<div id="footer">
+</div>
+
 </body>
 </html>
