@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <link rel="stylesheet" type="text/css" href="/static/css/map.css"/>
-<script type="text/javascript" src="/static/jquery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery/jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="/static/js/map.js"></script>
 <head>
     <title>map</title>

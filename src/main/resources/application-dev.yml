@@ -1,4 +1,6 @@
 server:
+#  servlet:
+#    context-path: /usMap
   port: 8080
 
 spring:
@@ -46,6 +48,7 @@ spring:
     # 设置页面缓存
     cache: false
     template_update_delay: 0
+    request-context-attribute: request
     # 设置ftl文件路径 注意在webapp下的目录不要加classpath!!!
     template-loader-path: classpath:/templates/
 

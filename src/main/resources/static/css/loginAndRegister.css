@@ -122,6 +122,14 @@ body, html {
 .main_center_bottom_input:focus{
     border:1px solid cornflowerblue;
 }
+
+.errorspan{
+    color: red;
+    font-size: 15px;
+    position:absolute;
+    top: -20px;
+}
+
 .main_center_bottom_button{
     width:100%;
     /*父级标签的宽度*/

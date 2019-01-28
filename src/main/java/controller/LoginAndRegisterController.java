@@ -24,19 +24,20 @@ public class LoginAndRegisterController {
         //后端只验证，是否注册过
 //        model.addAttribute("flag","register");
         System.out.println("进入register");
-        String inputemail= user.getEmail();
-        User testuser=userMapper.selectUserByEmail(inputemail);
-        if (testuser==null){
-            //注册
-            System.out.println("注册成功");
-            userMapper.insert(user);
-            return "map";
-        }
-        else{
-            //该用户已经被注册
-            System.out.println("该用户已被注册");//要反馈到前端
-            return "toLoginAndRegister?flag=register";
-        }
+        return "";
+//        String inputemail= user.getEmail();
+//        User testuser=userMapper.selectUserByEmail(inputemail);
+//        if (testuser==null){
+//            //注册
+//            System.out.println("注册成功");
+//            userMapper.insert(user);
+//            return "map";
+//        }
+//        else{
+//            //该用户已经被注册
+//            System.out.println("该用户已被注册");//要反馈到前端
+//            return "toLoginAndRegister?flag=register";
+//        }
 
 //        if(result.hasErrors()){
 //            System.out.println(result.getAllErrors());
@@ -48,27 +49,28 @@ public class LoginAndRegisterController {
     @RequestMapping(value="/login")
     public String login(@Valid User inputuser,Model model) {
         System.out.println("进入login");
+        return "";
 //        model.addAttribute("flag","login");
-        String inputemail ;
-        inputemail  = inputuser.getEmail();
-        String inputpassword;
-        inputpassword = inputuser.getPassword();
-
-        User user = userMapper.selectUserByEmail(inputemail);
-        if (user == null) {
-            System.out.println("该邮箱并未注册！");
-            return "/toLoginAndRegister";
-        } else {
-            String dbpw = user.getPassword();
-            if (dbpw.equals(inputpassword)) {
-                System.out.println("登录成功！");
-                return "map";//不可返回空
-            } else {
-                System.out.println("密码错误！");
-                return "/toLoginAndRegister?flag=login"; //不可返回空
-            }
-
-        }
+//        String inputemail ;
+//        inputemail  = inputuser.getEmail();
+//        String inputpassword;
+//        inputpassword = inputuser.getPassword();
+//
+//        User user = userMapper.selectUserByEmail(inputemail);
+//        if (user == null) {
+//            System.out.println("该邮箱并未注册！");
+//            return "/toLoginAndRegister";
+//        } else {
+//            String dbpw = user.getPassword();
+//            if (dbpw.equals(inputpassword)) {
+//                System.out.println("登录成功！");
+//                return "map";//不可返回空
+//            } else {
+//                System.out.println("密码错误！");
+//                return "/toLoginAndRegister?flag=login"; //不可返回空
+//            }
+//
+//        }
     }
 
     //请求一个参数
