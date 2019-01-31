@@ -1,4 +1,19 @@
 $(function () {
+    transformState(flag);
+    $(document).on("click", ".main_center_title_login div", function () {
+        flag = "login";
+        transformState(flag)
+        // window.location.href = changeURLArg(window.location.href, 'flag', "login")
+    });
+    $(document).on("click", ".main_center_title_register div", function () {
+        flag = "register";
+        transformState(flag)
+        // window.location.href = changeURLArg(window.location.href, 'flag', "register")
+    });
+
+})
+
+function transformState(flag) {
     if (flag == "login") {
         $("#register").css("display", "none")
         $("#login").css("display", "block")
@@ -8,63 +23,58 @@ $(function () {
         $("#login").css("display", "none")
         validateForm("registerForm")
     }
-
-    $(".main_center_title_login div").click(function () {
-        window.location.href = changeURLArg(window.location.href, 'flag', "login")
-
-    });
-    $(".main_center_title_register div").click(function () {
-        window.location.href = changeURLArg(window.location.href, 'flag', "register")
-
-    });
-
-})
-function changeURLArg(url, arg, arg_val) {
-    var pattern = arg + '=([^&]*)';
-    var replaceText = arg + '=' + arg_val;
-    if (url.match(pattern)) {
-        var tmp = '/(' + arg + '=)([^&]*)/gi';
-        tmp = url.replace(eval(tmp), replaceText);
-        return tmp;
-    } else {
-        if (url.match('[\?]')) {
-            return url + '&' + replaceText;
-        } else {
-            return url + '?' + replaceText;
-        }
-    }
 }
 
 //校验表单
-function validateForm(formID){
-    $.validator.addMethod("regrex",function(value,element,params){
+function validateForm(formID) {
+    var url = "login"
+    if (formID == "registerForm")
+        url = "register"
+    $.validator.addMethod("regrex", function (value, element, params) {
         var regrex = params;
-        return this.optional(element)||(regrex.test(value));
-    },"*输入格式错误");
-    $("#"+formID).validate({
-        onfocusout: function(element) { $(element).valid(); },
-        errorPlacement:function(error,element){
+        return this.optional(element) || (regrex.test(value));
+    }, "*输入格式错误");
+    var validator = $("#" + formID).validate({
+        //验证成功异步提交表单
+        submitHandler: function (form) {
+            var data = $("#" + formID).serialize()
+            ajaxSubmitForm(data, url);
+        },
+        onfocusout: function (element) {
+            clearErrorsOnFousout()
+            //失去焦点不对空值校验
+            $(element).rules("add", {
+                required: false
+            });
+            $(element).valid();
+            $(element).rules("add", {
+                required: true
+            });
+        },
+        errorPlacement: function (error, element) {
+            //前端错误显示前先清除后端传来的错误，防止错误叠加
+            $(element).next().text("")
             error.appendTo(element.next());
         },
-        rules:{
-            nickname:{
-                required:true,
+        rules: {
+            nickname: {
+                required: true,
                 rangelength:[5,15],
-                regrex: /^\w{5,15}$/
+                regrex: /^[a-zA-Z0-9]+$/
             },
-            email:{
-                required:true,
+            email: {
+                required: true,
                 email:true
             },
-            password:{
-                required:true,
+            password: {
+                required: true,
                 rangelength:[6,16],
-                regrex: /^\w{6,16}$/
+                regrex: /^[a-zA-Z0-9]+$/
             },
         },
         messages: {
             nickname: {
-                required: "*请输入用户名",
+                required: "*请输入昵称",
                 rangelength: "*昵称长度为5-15位",
                 regrex: "*昵称由数字、字母或下画线组成"
             },
@@ -82,11 +92,86 @@ function validateForm(formID){
                 required: "*请输入邮箱",
                 email: "*请输入正确的邮箱"
             },
+        },
+    });
+    validator.resetForm()
+}
+
+function ajaxSubmitForm(data, url) {
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: "json",
+        data: data,
+        beforeSend: function () {
+            //防止重复提交
+            $("#registerButton").attr('disabled', true);
+            $("#loginButton").attr('disabled', true);
+            // $("#loginButton").text('提交中...');
+        },
+        complete: function () {
+            $("#registerButton").removeAttr('disabled');
+            $("#loginButton").removeAttr('disabled');
+        },
+        success: function (result) {
+            var errors = JSON.stringify(result)
+            //清楚之前后端校验错误但本次检验正确的错误提示
+            clearAllErrors()
+            if (result.state == "success") {
+                window.location.href = "/"
+            } else {
+                for (var key in result) {
+                    var inputID = "#" + url + "_" + key + "_error";
+                    $(inputID).text(result[key])
+                }
+            }
+        },
+        //失败回调函数
+        error: function (err) {
+            console.error(err);
+            // alert("登陆失败")
         }
     });
+}
+
+//后端校验错误清空
+function clearAllErrors() {
+        $("#login_email_error").text("");
+        $("#login_password_error").text("");
+        $("#register_nickname_error").text("");
+}
+//输入框无值并且失去焦点时情况
+function clearErrorsOnFousout() {
+    if($("#main_center_bottom_input_mail").text()==""){
+        $("#login_email_error").text("");
+        $("#register_email_error").text("");
+    }
+    if($("#main_center_bottom_input_nickname").text()==""){
+        $("#login_nickname_error").text("");
+        $("#register_nickname_error").text("");
+    }
+    if($("#main_center_bottom_input_password").text()==""){
+        $("#login_password_error").text("");
+        $("#register_password_error").text("");
+    }
 
 }
 
+function changeURLArg(url, arg, arg_val) {
+    var pattern = arg + '=([^&]*)';
+    var replaceText = arg + '=' + arg_val;
+    if (url.match(pattern)) {
+        var tmp = '/(' + arg + '=)([^&]*)/gi';
+        tmp = url.replace(eval(tmp), replaceText);
+        return tmp;
+    } else {
+        if (url.match('[\?]')) {
+            return url + '&' + replaceText;
+        } else {
+            return url + '?' + replaceText;
+        }
+    }
+}
 
 // 昵称validate
 // $(document).ready(function(){

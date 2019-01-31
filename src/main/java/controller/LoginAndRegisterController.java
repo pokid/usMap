@@ -1,76 +1,78 @@
 package controller;
 
+import com.alibaba.fastjson.JSON;
 import domain.User;
 import mapper.UserMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import service.serviceImpl.TestBootServiceImpl;
+import utils.CommonUtil;
+import utils.validate.Login;
+import utils.validate.Register;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class LoginAndRegisterController {
-
+    Logger logger = LoggerFactory.getLogger(LoginAndRegisterController.class);
     @Autowired
     private UserMapper userMapper;
 
-
+    @ResponseBody
     @PostMapping("/register")
-    public String register(@Valid User user, BindingResult result,Model model){
-        //判断邮箱有没有被注册过
-        //非空由前端验证
-        //后端只验证，是否注册过
-//        model.addAttribute("flag","register");
-        System.out.println("进入register");
-        return "";
-//        String inputemail= user.getEmail();
-//        User testuser=userMapper.selectUserByEmail(inputemail);
-//        if (testuser==null){
-//            //注册
-//            System.out.println("注册成功");
-//            userMapper.insert(user);
-//            return "map";
-//        }
-//        else{
-//            //该用户已经被注册
-//            System.out.println("该用户已被注册");//要反馈到前端
-//            return "toLoginAndRegister?flag=register";
-//        }
-
-//        if(result.hasErrors()){
-//            System.out.println(result.getAllErrors());
-//        }
-//        model.addAttribute("kk","邮箱不可为空"); //返回loginAndRegister时，kk显示不出来，所以先以map，代替
-
+    public String register(@Validated({Register.class}) User user, BindingResult result,HttpServletRequest request){
+        logger.info("进入register");
+        Map resultMap = CommonUtil.getValidatorResult(result);
+        String email= user.getEmail();
+        if(resultMap.size() != 0){
+            return JSON.toJSONString(resultMap);
+        }else {
+            if(userMapper.selectUserByEmail(email)!=null){
+                resultMap.put("email","*该邮箱已被注册");
+                resultMap.put("state","false");
+                return JSON.toJSONString(resultMap);
+            }
+            resultMap.put("state","success");
+            userMapper.insert(user);
+            request.getSession().setAttribute("user",user.getNickname());
+            logger.info("注册成功");
+            return JSON.toJSONString(resultMap);
+        }
 
     }
+
+    @ResponseBody
     @RequestMapping(value="/login")
-    public String login(@Valid User inputuser,Model model) {
-        System.out.println("进入login");
-        return "";
-//        model.addAttribute("flag","login");
-//        String inputemail ;
-//        inputemail  = inputuser.getEmail();
-//        String inputpassword;
-//        inputpassword = inputuser.getPassword();
-//
-//        User user = userMapper.selectUserByEmail(inputemail);
-//        if (user == null) {
-//            System.out.println("该邮箱并未注册！");
-//            return "/toLoginAndRegister";
-//        } else {
-//            String dbpw = user.getPassword();
-//            if (dbpw.equals(inputpassword)) {
-//                System.out.println("登录成功！");
-//                return "map";//不可返回空
-//            } else {
-//                System.out.println("密码错误！");
-//                return "/toLoginAndRegister?flag=login"; //不可返回空
-//            }
-//
-//        }
+    public String login(@Validated({Login.class}) User user, BindingResult result, HttpServletRequest request) {
+        //输入格式校验
+        logger.info("进入login");
+        Map resultMap = CommonUtil.getValidatorResult(result);
+        if(resultMap.size() != 0){
+            return JSON.toJSONString(resultMap);
+        }else {
+            if(userMapper.selectUserByEmail(user.getEmail())==null){
+                resultMap.put("email","*该邮箱不存在");
+                resultMap.put("state","false");
+                return JSON.toJSONString(resultMap);
+            }
+            User u = userMapper.selectUserByEmailAndPwd(user.getEmail(),user.getPassword());
+            if(u==null){
+                resultMap.put("password","*密码不正确");
+                resultMap.put("state","false");
+                return JSON.toJSONString(resultMap);
+            }
+            resultMap.put("state","success");
+            request.getSession().setAttribute("user",u.getNickname());
+            logger.info("登录成功");
+            return JSON.toJSONString(resultMap);
+        }
     }
 
     //请求一个参数

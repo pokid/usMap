@@ -5,7 +5,7 @@ $(function () {
         $("#tasks").show();
         $("#ac_td1_div").html("<input style='width: 100%;height: 100%;' id='hideTasks' type='button' value='隐藏'>");
     });
-    $(document).on("click", "#hideTasks", "", function () {
+    $(document).on("click", "#hideTasks", function () {
         var height = $(".m_l_map_main").height()
         $(".m_l_map_main").css("height",(height-155))
         $("#tasks").hide();

@@ -1,17 +1,32 @@
 package domain;
 
+import utils.validate.Login;
+import utils.validate.Register;
+
+import javax.validation.GroupSequence;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@GroupSequence({Login.class,User.class})
 public class User implements Serializable {
 
     private Integer userid;
 
-
+    @NotBlank(groups = {Register.class},message="*请输入昵称")
+    @Size(groups = {Register.class},min = 5, max = 15, message = "*昵称长度为5-15位")
+    @Pattern(groups = {Register.class},regexp="^[a-zA-Z0-9]+$",message="*昵称由数字、字母或下画线组成")
     private String nickname;
 
+    @NotBlank(groups = {Login.class,Register.class},message="*请输入邮箱")
+    @Email(groups = {Login.class,Register.class},message="*请输入正确的邮箱")
     private String email;
 
+    @NotBlank(groups = {Login.class,Register.class},message="*请输入密码")
+    @Size(groups = {Login.class,Register.class},min = 6, max = 16, message = "*密码长度为6-16位")
+    @Pattern(groups = {Login.class,Register.class},regexp="^[a-zA-Z0-9]+$",message="*密码由数字、字母或下画线组成")
     private String password;
 
     private static final long serialVersionUID = 1L;

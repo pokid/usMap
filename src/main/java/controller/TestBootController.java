@@ -25,8 +25,6 @@ public class TestBootController {
 
     @RequestMapping("/toLoginAndRegister")
     String toLoginAndRegister(Model model,String flag) {
-        System.out.println("_____-");
-        System.out.println(flag);
         if(flag == null)
             flag = "login";
         model.addAttribute("flag",flag);

@@ -1,13 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<link rel="stylesheet" type="text/css" href="/static/css/index.css" />
-<script type="text/javascript" src="/static/js/test.js">
-</script>
-<script type="text/javascript">
-    // window.onload = function(){
-    //     attackEnemy()
-    // }
-</script>
+<link rel="stylesheet" type="text/css" href="${request.getContextPath()}/static/css/index.css" />
 <head>
     <title>index</title>
 </head>
@@ -15,10 +8,10 @@
 <div id="header">
     <div id="h_left">
         <span class = "h_left_l">
-            <img src="/static/images/test.jpg" style="height:70px;width:70px;">
+            <img src="${request.getContextPath()}/static/images/test.jpg" style="height:70px;width:70px;">
         </span>
         <div class = "h_left_r">
-            <a href="/">usMap</a>
+            <a href="${request.getContextPath()}/">usMap</a>
         </div>
 
     </div>
@@ -38,7 +31,7 @@
     </div>
     <div class="m_right">
         <span class = "m_right_span">
-            <a style="text-decoration:none" href="/toMap"> 开启你的地图之旅吧！</a>
+            <a style="text-decoration:none" href="${request.getContextPath()}/toMap"> 开启你的地图之旅吧！</a>
         </span>
     </div>
 </div>
