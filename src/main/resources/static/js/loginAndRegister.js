@@ -40,6 +40,11 @@ function validateForm(formID) {
             var data = $("#" + formID).serialize()
             ajaxSubmitForm(data, url);
         },
+        onfocusin: function(element){
+            //获得焦点时清除上一次后端传来的错误
+            $(element).next().text("")
+            $(element).valid();
+        },
         onfocusout: function (element) {
             clearErrorsOnFousout(url)
             //失去焦点不对空值校验
@@ -94,7 +99,7 @@ function validateForm(formID) {
             },
         },
     });
-    validator.resetForm()
+    // validator.resetForm()
 }
 
 function ajaxSubmitForm(data, url) {
