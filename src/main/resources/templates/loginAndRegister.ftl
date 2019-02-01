@@ -37,12 +37,12 @@
         <div id="login" class="main_center_bottom" style="display: block">
             <form action="" method="post" id="loginForm">
                 <div style="position: relative;">
-                <input type="text" id="main_center_bottom_input_mail" class="main_center_bottom_input required" placeholder="邮箱" name="email">
+                <input type="text" id="mail_login" class="main_center_bottom_input required" placeholder="邮箱" name="email">
                 <span id="login_email_error" class="errorspan"></span>
                 </div>
 
                 <div style="position: relative;">
-                <input type="password" id="main_center_bottom_input_password" class="main_center_bottom_input" placeholder="密码" name="password">
+                <input type="password" id="password_login" class="main_center_bottom_input" placeholder="密码" name="password">
                 <span id="login_password_error" class="errorspan"></span>
                 </div>
                 <input type="submit" id="loginButton" class="main_center_bottom_button" value="登录">
@@ -52,17 +52,17 @@
         <div id="register" class="main_center_bottom" style="display: none">
             <form action="" method="post" id="registerForm">
                 <div style="position: relative;">
-                    <input type="text" id="main_center_bottom_input_mail" class="main_center_bottom_input required" placeholder="邮箱" name="email">
+                    <input type="text" id="mail_register" class="main_center_bottom_input required" placeholder="邮箱" name="email">
                     <span id="register_email_error" class="errorspan"></span>
                 </div>
 
                 <div style="position: relative;">
-                    <input type="text" id="main_center_bottom_input_nickname" class="main_center_bottom_input required" placeholder="昵称" name="nickname">
+                    <input type="text" id="nickname_register" class="main_center_bottom_input required" placeholder="昵称" name="nickname">
                     <span id="register_nickname_error" class="errorspan"></span>
                 </div>
 
                 <div style="position: relative;">
-                    <input type="password" id="main_center_bottom_input_password" class="main_center_bottom_input" placeholder="密码" name="password">
+                    <input type="password" id="password_register" class="main_center_bottom_input" placeholder="密码" name="password">
                     <span id="register_password_error" class="errorspan"></span>
                 </div>
                 <input type="submit" id="registerButton" class="main_center_bottom_button" value="注册">

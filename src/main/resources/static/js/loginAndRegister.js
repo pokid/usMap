@@ -41,7 +41,7 @@ function validateForm(formID) {
             ajaxSubmitForm(data, url);
         },
         onfocusout: function (element) {
-            clearErrorsOnFousout()
+            clearErrorsOnFousout(url)
             //失去焦点不对空值校验
             $(element).rules("add", {
                 required: false
@@ -141,18 +141,25 @@ function clearAllErrors() {
         $("#register_nickname_error").text("");
 }
 //输入框无值并且失去焦点时情况
-function clearErrorsOnFousout() {
-    if($("#main_center_bottom_input_mail").text()==""){
-        $("#login_email_error").text("");
-        $("#register_email_error").text("");
-    }
-    if($("#main_center_bottom_input_nickname").text()==""){
-        $("#login_nickname_error").text("");
-        $("#register_nickname_error").text("");
-    }
-    if($("#main_center_bottom_input_password").text()==""){
-        $("#login_password_error").text("");
-        $("#register_password_error").text("");
+function clearErrorsOnFousout(url) {
+    if(url == "login"){
+        if($("#mail_login").val()==""){
+            $("#login_email_error").text("");
+        }
+        if($("#password_login").val()==""){
+            $("#login_password_error").text("");
+        }
+    }else {
+        if($("#mail_register").val()==""){
+            $("#register_email_error").text("");
+        }
+        if($("#nickname_register").val()==""){
+            $("#register_nickname_error").text("");
+        }
+        if($("#password_register").val()==""){
+            $("#register_password_error").text("");
+        }
+
     }
 
 }
