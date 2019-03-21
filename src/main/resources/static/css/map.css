@@ -5,7 +5,7 @@ body, html {
 
 #header {
     height: 80px;
-    background-color: blueviolet;
+    background-color: #7cba59;
     position: relative;
 }
 
@@ -27,7 +27,7 @@ body, html {
 .h_left_index a{
     text-decoration: none;
     font-size: 20px;
-    color: chocolate;
+    color: #e6e6e6;
 }
 .h_left_name{
     width: 15%;
@@ -40,8 +40,8 @@ body, html {
     width: 100%;
     height: 40%;
     font-size: 25px;
-    color: chocolate;
-    background: blueviolet;
+    color: #e6e6e6;
+    background: #7cba59;
     border: solid 1px #999999;
 }
 .h_left_menu{
@@ -155,7 +155,7 @@ body, html {
 .m_l_map_main{
     width:880px;
     height:750px;
-    background: brown;
+    background: #9bc683;
     position: relative
 }
 .m_l_map_top{
@@ -236,8 +236,8 @@ body, html {
     width: 200px;
     height: 150px;
     border-bottom: solid 2px black;
-    border-right:solid 30px brown;
-    border-left:solid 30px brown;
+    border-right:solid 30px #9bc683;
+    border-left:solid 30px #9bc683;
 }
 #map_table_tr_addCol > td{
     height: 60px;
@@ -360,7 +360,7 @@ body, html {
 .m_r {
     width: 15%;
     height: 100%;
-    background: aqua;
+    background: #ace18d;
     overflow-y: auto;
     overflow-x: auto;
     float: left;
@@ -373,7 +373,7 @@ body, html {
     height: 10%;
     font-size: 25px;
     text-align: center;
-    box-shadow: 0 2px 0px darkgray;
+    box-shadow: 0 2px 0px #ffffff;
 }
 .m_r_title_my{
     display:table-cell;
