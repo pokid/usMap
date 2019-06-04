@@ -15,7 +15,7 @@ public class TestBootController {
         //@ResponseBody 传值用ResponseBody，页面跳转不要用
         //templates为页面模板  static为静态资源
     public String home(Model model) {
-        model.addAttribute("name","你军哥哥1");
+        model.addAttribute("name","你军哥哥123");
         return "index";
     }
 
