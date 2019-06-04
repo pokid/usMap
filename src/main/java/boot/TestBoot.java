@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(scanBasePackages = {"controller","service","configuration","interceptor","utils"})
+@SpringBootApplication(scanBasePackages = {"controller","service","configuration","interceptor","utils","rabbitmq"})
 @MapperScan(basePackages  = {"mapper","domain"})
 public class TestBoot extends SpringBootServletInitializer {
 

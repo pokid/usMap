@@ -30,6 +30,25 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
     filters: stat,wall,log4j
+  rabbitmq:
+    host: 47.102.103.232
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /test
+    publisher-confirms: true
+    publisher-returns: true
+    cache:
+      channel:
+        size: 10
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 1
+        max-concurrency: 3
+        retry:
+          enabled: true
+
 
   mvc:
 #    view:

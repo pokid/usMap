@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="${request.getContextPath()}/static/css/map.css"/>
 <script type="text/javascript" src="${request.getContextPath()}/static/js/jquery/jquery-3.0.0.min.js"></script>
 <script type="text/javascript" src="${request.getContextPath()}/static/js/map.js"></script>
+<script type="text/javascript" src="${request.getContextPath()}/static/js/team.js"></script>
 <head>
     <title>map</title>
 </head>
@@ -146,14 +147,14 @@
     </div>
     <div class="m_r">
         <div class="m_r_title">
-            <div class="m_r_title_my">
+            <div id="my" class="m_r_title_my">
                 <div>我的</div>
             </div>
-            <div class="m_r_title_team">
+            <div id="team" class="m_r_title_team">
                 <div>团队</div>
             </div>
         </div>
-        <div style="width: 100%;height: 90%;text-align: center;">
+        <div class="mydiv" style="width: 100%;height: 10%;text-align: center;">
             <div class="mywork_div">
                 <a class="mywork_title">我的作品</a>
                 <ul class="mywork" style="display: none;padding-right: 25%;margin-top: 0px;">
@@ -161,6 +162,30 @@
                     <li><a>作品2</a></li>
                     <li><a>作品3</a></li>
                 </ul>
+            </div>
+            <div class="myteam_div">
+                <a class="myteam_title">我的团队</a>
+                <ul class="myteam" style="display: none;padding-right: 25%;margin-top: 0px;">
+                    <li><a>团队1</a></li>
+                    <li><a>团队2</a></li>
+                    <li><a>团队3</a></li>
+                </ul>
+            </div>
+            <div class="belongteam_div">
+                <a class="belongteam_title">所属团队</a>
+                <ul class="belongteam" style="display: none;padding-right: 25%;margin-top: 0px;">
+                    <li><a>团队1</a></li>
+                    <li><a>团队2</a></li>
+                    <li><a>团队3</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="teamdiv" style="width: 100%;height: 90%;text-align: center;display: none">
+            <div class="mywork_div">
+                <a>张三</a>
+                <div class="add_div">
+                <input class="addUser" type="button" value="添加成员">
+                </div>
             </div>
         </div>
 

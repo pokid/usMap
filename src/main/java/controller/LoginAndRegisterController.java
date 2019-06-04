@@ -7,16 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import utils.CommonUtil;
 import utils.validate.Login;
 import utils.validate.Register;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -49,7 +46,7 @@ public class LoginAndRegisterController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/login")
+    @PostMapping(value="/login")
     public String login(@Validated({Login.class}) User user, BindingResult result, HttpServletRequest request) {
         //输入格式校验
         logger.info("进入login");
